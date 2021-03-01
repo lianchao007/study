@@ -1,0 +1,44 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-01 14:29:18
+ * @LastEditTime: 2021-03-01 14:41:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \study\Ajax.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Ajax(url, {
+            methods = 'GET',
+            data,
+            header,
+            async
+        }, fn) {
+            let xhr = new XMLHttpRequest()
+            if (header) {
+                for (let [key, val] of header) {
+                    xhr.setRequestHeader(key, val)
+                }
+            }
+            xhr.open(methods, url, !!async)
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
+                    fn.call(this, xhr.responseText)
+                }
+            }
+            xhr.send(data)
+        }
+    </script>
+</body>
+
+</html>
