@@ -1,0 +1,44 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 14:03:57
+ * @LastEditTime: 2021-03-02 14:13:34
+ * @LastEditors: Please set LastEditors
+ * @Description: 计数排序
+ * @FilePath: \study\algorithm\sort\CountSort.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 计数排序
+        function CountSort(arr) {
+            const min = Math.min(...arr), len = arr.length, countArr = [], newArr = []
+            for (let i = 0; i < len; i++) {
+                let idx = arr[i] - min + 1
+                if (!countArr[idx]) {
+                    countArr[idx] = 0
+                }
+                countArr[idx]++
+            }
+            for (let i in countArr) {
+                while (countArr[i]) {
+                    newArr.push(Number(i))
+                    countArr[i]--
+                }
+            }
+            return newArr
+        }
+        // 测试用例
+        console.log(CountSort([2, 343, 342, 1, 123, 43, 4343, 433, 687, 654, 3, 3]))
+    </script>
+</body>
+
+</html>

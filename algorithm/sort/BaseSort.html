@@ -1,7 +1,7 @@
 <!--
  * @Author: your name
  * @Date: 2021-03-02 09:58:54
- * @LastEditTime: 2021-03-02 10:32:35
+ * @LastEditTime: 2021-03-02 13:17:50
  * @LastEditors: Please set LastEditors
  * @Description: 基数排序
  * @FilePath: \study\algorithm\sort\BaseSort.html
@@ -20,8 +20,7 @@
     <script>
         // 基数排序
         function BaseSort(arr) {
-            let base = new Array(10), mod = 10, dev = 1, max = Math.max(...arr), maxLen = String(max).length
-            console.log(maxLen)
+            let base = new Array(10), mod = 10, dev = 1, maxLen = String(Math.max(...arr)).length
             for (let i = 0; i < maxLen; i++, dev *= 10, mod *= 10) {
                 for (let j = 0; j < arr.length; j++) {
                     let bullet = parseInt((arr[j] % mod) / dev)

@@ -1,0 +1,57 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 14:25:30
+ * @LastEditTime: 2021-03-02 15:18:25
+ * @LastEditors: Please set LastEditors
+ * @Description: 堆排序
+ * @FilePath: \study\algorithm\sort\HeapSort.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 堆排序
+        function HeapSort(arr) {
+            let len = arr.length
+            // 至下往上建立大顶堆 len/2可以得到所有节点的父节点
+            for (let i = Math.floor(len / 2); i >= 0; i--) {
+                heapify(arr, i)
+            }
+            for (let i = arr.length - 1; i > 0; i--) {
+                [arr[0], arr[i]] = [arr[i], arr[0]]
+                len--
+                heapify(arr, 0)
+            }
+            // 堆化
+            function heapify(arr, i) {
+                // left堆的左子节点right堆的右子节点
+                let left = 2 * i + 1, right = 2 * i + 2, largest = i
+                // 获取父子节点间最大值的位置
+                if (left < len && arr[left] > arr[largest]) {
+                    largest = left
+                }
+                if (right < len && arr[right] > arr[largest]) {
+                    largest = right
+                }
+                // 最大值和原来不一致则置换，并堆化其子项
+                if (largest != i) {
+                    [arr[i], arr[largest]] = [arr[largest], arr[i]]
+                    heapify(arr, largest)
+                }
+            }
+            return arr
+        }
+        // 测试用例
+        console.log(HeapSort([2, 343, 342, 1, 123, 43, 4343, 433, 687, 654, 3, 3]))
+    </script>
+</body>
+
+</html>
