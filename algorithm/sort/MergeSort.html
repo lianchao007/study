@@ -1,0 +1,54 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 09:23:33
+ * @LastEditTime: 2021-03-02 09:45:31
+ * @LastEditors: Please set LastEditors
+ * @Description: 归并排序
+ * @FilePath: \study\algorithm\sort\MergeSort.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 归并排序
+        function MergeSort(arr) {
+            const len = arr.length
+            if (len > 1) {
+                return merge(MergeSort(arr.slice(0, Math.floor(len / 2))), MergeSort(arr.slice(Math.floor(len / 2))))
+            } else {
+                return arr
+            }
+        }
+        function merge(left, right) {
+            let arr = []
+            let i = 0, j = 0, lLen = left.length, rLen = right.length
+            while (i < lLen && j < rLen) {
+                if (left[i] < right[j]) {
+                    arr.push(left[i])
+                    i++
+                } else {
+                    arr.push(right[j])
+                    j++
+                }
+            }
+            if (i < lLen) {
+                arr = arr.concat(left.slice(i))
+            } else if (j < rLen) {
+                arr = arr.concat(right.slice(j))
+            }
+            return arr
+        }
+        // 测试用例
+        console.log(MergeSort([2, 5, 4, 3, 8, 6, 4]))
+    </script>
+</body>
+
+</html>

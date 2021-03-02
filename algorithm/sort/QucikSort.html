@@ -1,0 +1,67 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-01 14:58:52
+ * @LastEditTime: 2021-03-01 15:42:39
+ * @LastEditors: Please set LastEditors
+ * @Description: 快速排序
+ * @FilePath: \study\algorithm\sort\QucikSort.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 快速排序
+        function QucikSort(arr, left, right) {
+            if (left > right) return
+            let temp = arr[left], i = left, j = right
+            while (i < j) {
+                while (i < j && arr[j] >= temp) {
+                    j--
+                }
+                while (i < j && arr[i] <= temp) {
+                    i++
+                }
+                if (i < j) {
+                    [arr[i], arr[j]] = [arr[j], arr[i]]
+                }
+                [arr[left], arr[i]] = [arr[i], temp]
+                QucikSort(arr, left, i - 1)
+                QucikSort(arr, i + 1, right)
+            }
+
+            return arr
+        }
+        // function QucikSort(arr) {
+        //     let len = arr.length
+        //     if (len === 1) {
+        //         return arr
+        //     } else if (len) {
+        //         const leftArr = []
+        //         const rightArr = []
+        //         const middle = arr[0]
+        //         for (let i = 1; i < len; i++) {
+        //             if (arr[i] < middle) {
+        //                 leftArr.push(arr[i])
+        //             } else {
+        //                 rightArr.push(arr[i])
+        //             }
+        //         }
+        //         return [...QucikSort(leftArr), middle, ...QucikSort(rightArr)]
+        //     } else {
+        //         return []
+        //     }
+        // }
+        // 测试用例
+        console.log(QucikSort([2, 5, 4, 3, 8, 6, 4], 0, 6))
+    </script>
+</body>
+
+</html>

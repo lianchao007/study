@@ -1,0 +1,53 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 08:06:45
+ * @LastEditTime: 2021-03-02 08:41:52
+ * @LastEditors: Please set LastEditors
+ * @Description: 插入排序
+ * @FilePath: \study\algorithm\sort\InsertSort.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 插入排序
+        function InsertSort(arr) {
+            const len = arr.length
+            let cur, j
+            for (let i = 1; i < len; i++) {
+                cur = arr[i]
+                j = i - 1
+                while (j >= 0 && arr[j] > cur) {
+                    arr[j + 1] = arr[j]
+                    j--
+                }
+                arr[j + 1] = cur
+            }
+            return arr
+        }
+        // function InsertSort(arr) {
+        //     const len = arr.length
+        //     for (let i = 1; i < len; i++) {
+        //         let j = i
+        //         while (j > 0 && arr[j - 1] > arr[i]) {
+        //             j--
+        //         }
+        //         arr.splice(j, 0, arr.splice(i, 1)[0])
+        //     }
+        //     return arr
+        // }
+
+        // 测试用例
+        console.log(InsertSort([2, 5, 4, 3, 8, 6, 4]))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 08:22:57
+ * @LastEditTime: 2021-03-02 09:19:55
+ * @LastEditors: Please set LastEditors
+ * @Description: 希尔排序
+ * @FilePath: \study\algorithm\sort\ShellSort.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 希尔排序
+        function ShellSort(arr) {
+            const len = arr.length
+            // 分割成len/i份，每份i个
+            for (let i = Math.floor(len / 2); i > 0; i = Math.floor(i / 2)) {
+                // 分组快速排序
+                for (let j = i; j < len; j++) {
+                    for (let k = j - i; k >= 0; k -= i) {
+                        if (arr[k] > arr[k + i]) {
+                            [arr[k], arr[k + i]] = [arr[k + i], arr[k]]
+                        }
+                    }
+                }
+            }
+            return arr
+        }
+        // 测试用例
+        console.log(ShellSort([2, 5, 4, 3, 8, 6, 4]))
+    </script>
+</body>
+
+</html>

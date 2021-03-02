@@ -1,0 +1,48 @@
+<!--
+ * @Author: your name
+ * @Date: 2021-03-02 09:58:54
+ * @LastEditTime: 2021-03-02 10:32:35
+ * @LastEditors: Please set LastEditors
+ * @Description: 基数排序
+ * @FilePath: \study\algorithm\sort\BaseSort.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 基数排序
+        function BaseSort(arr) {
+            let base = new Array(10), mod = 10, dev = 1, max = Math.max(...arr), maxLen = String(max).length
+            console.log(maxLen)
+            for (let i = 0; i < maxLen; i++, dev *= 10, mod *= 10) {
+                for (let j = 0; j < arr.length; j++) {
+                    let bullet = parseInt((arr[j] % mod) / dev)
+                    if (!base[bullet]) {
+                        base[bullet] = []
+                    }
+                    base[bullet].push(arr[j])
+                }
+                arr = []
+                for (let j = 0; j < base.length; j++) {
+                    if (base[j]) {
+                        arr = arr.concat(base[j])
+                    }
+                }
+                base = new Array(10)
+            }
+            return arr
+        }
+        // 测试用例
+        console.log(BaseSort([2, 343, 342, 1, 123, 43, 4343, 433, 687, 654, 3]))
+    </script>
+</body>
+
+</html>
